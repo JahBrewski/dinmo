@@ -1,0 +1,80 @@
+$montserrat: 'Montserrat', sans-serif;
+$blue: #00004c;
+html { height: 100%; }
+body {
+  padding-top: 50px;
+  height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $montserrat;
+}
+
+.container {
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+.navbar-default {
+  background-color: #212121;
+  font-family: $montserrat;
+  .navbar-brand {
+    color: white;
+    &:hover {
+    color: white;
+    }
+  }
+  .navbar-nav > li > a {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.absolute-center {
+  width: 50%;
+  height: 20%;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.center-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.headline {
+  letter-spacing: 4px;
+  font-size: 68px;
+}
+
+.action-button {
+  display: inline-block;
+  font-family: $montserrat;
+  font-size: 25px;
+  margin: 20px;
+  border: solid black 2px;
+  padding: 10px;
+  &:hover {
+    border: solid $blue 2px;
+    color: $blue;
+  }
+  input[type="submit"] {
+    padding: 0;
+    border: none;
+    background-color: white;
+  }
+}
+
+.input-field {
+  margin-bottom: 5px;
+  input {
+    width: 100%;
+  }
+}
+
