@@ -11,5 +11,9 @@
           %span DINMO
           %span.power-noun
       #main-nav-collapse.collapse.navbar-collapse
+      -#
         %ul.nav.navbar-nav.navbar-right
-          %li= link_to "LOGIN", "#"
+          - if user_signed_in?
+            %li= link_to "LOGOUT", destroy_user_session_path, :method => :delete
+          - else
+            %li= link_to "LOGIN", "#"

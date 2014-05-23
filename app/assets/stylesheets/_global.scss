@@ -74,7 +74,12 @@ h1, h2, h3, h4, h5, h6 {
 .input-field {
   margin-bottom: 5px;
   input {
-    width: 100%;
+    width: 75%;
+    height: 30px;
   }
 }
 
+.flash {
+  text-align: center;
+  color: red;
+}
