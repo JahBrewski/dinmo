@@ -59,15 +59,16 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 25px;
   margin: 20px;
   border: solid black 2px;
-  padding: 10px;
   &:hover {
     border: solid $blue 2px;
     color: $blue;
   }
   input[type="submit"] {
     padding: 0;
+    padding: 10px;
     border: none;
     background-color: white;
+    cursor: pointer;
   }
 }
 
