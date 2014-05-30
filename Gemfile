@@ -24,6 +24,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use haml for templating
 gem 'haml-rails'
 
+# Use figaro for envirionment variables
+gem 'figaro'
+
 # Use Devise for authentication
 gem 'devise'
 
