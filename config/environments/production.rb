@@ -49,8 +49,8 @@ Dinmo::Application.configure do
   # config.log_tags = [ :subdomain, :uuid ]
 
   # ActionMailer Settings
-  config.action_mailer.default_url_options = { :host => 'wwww.dinmo.co' }
-  Rails.application.routes.default_url_options[:host] = 'wwww.dinmo.co'
+  config.action_mailer.default_url_options = { :host => 'www.dinmo.co' }
+  Rails.application.routes.default_url_options[:host] = 'www.dinmo.co'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
