@@ -3,6 +3,7 @@
     %h1.headline EXPERTS
     - if user_signed_in?
       .action-button Thanks for signing up!
+    - if current_user && !current_user.confirmed?
     - else
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
         = devise_error_messages!
