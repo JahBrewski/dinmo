@@ -72,15 +72,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.input-field {
+.hidden-input-field, .input-field {
   margin-bottom: 5px;
-  display: none;
   input {
     width: 75%;
     height: 30px;
   }
 }
-
+.hidden-input-field {
+  display: none;
+}
+  
 .flash {
   text-align: center;
   color: red;

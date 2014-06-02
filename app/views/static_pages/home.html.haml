@@ -7,19 +7,19 @@
     - else
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
         = devise_error_messages!
-        .input-field
+        .hidden-input-field
           = f.text_field :first_name, :autofocus => true, placeholder: "First Name"
-        .input-field
+        .hidden-input-field
           = f.text_field :last_name, :autofocus => true, placeholder: "Last Name"
-        .input-field
+        .hidden-input-field
           = f.text_field :username, :autofocus => true, placeholder: "Username"
-        .input-field
+        .hidden-input-field
           = f.text_field :email, :autofocus => true, placeholder: "Email"
-        .input-field
+        .hidden-input-field
           = f.text_field :mobile_number, :autofocus => true, placeholder: "Mobile Number"
-        .input-field
+        .hidden-input-field
           = f.text_field :expertise, :autofocus => true, placeholder: "Expertise"
-        .input-field
+        .hidden-input-field
           = f.password_field :password, placeholder: "Password"
         .action-button= f.submit "Join us"
 

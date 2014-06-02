@@ -1,12 +1,23 @@
 $(function() {
 
-  init();
+  if (is_homepage()) {
+    init();
+  }
 
   function init() {
+
     if (getParameterByName('failed') == 'y') {
       failed_registration_state();
     } else {
       initial_state();
+    }
+  }
+
+  function is_homepage() {
+    if ($(".static_pages-home").length) {
+      return true
+    } else {
+      return false
     }
   }
 
@@ -39,11 +50,11 @@ $(function() {
   }
 
   function fade_in_input_fields() {
-   $(".input-field").fadeIn( "slow" );
+   $(".hidden-input-field").fadeIn( "slow" );
   }
 
   function show_input_fields() {
-   $(".input-field").show();
+   $(".hidden-input-field").show();
   }
 
   function getParameterByName(name) {
