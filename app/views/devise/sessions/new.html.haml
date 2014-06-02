@@ -1,0 +1,14 @@
+.center-container
+  .absolute-center.text-center
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .input-field
+        = f.text_field :email, :autofocus => true, placeholder: "Email"
+      .input-field
+        = f.password_field :password, placeholder: "Password"
+      - if devise_mapping.rememberable?
+        .remember-me
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .action-button= f.submit "Sign in"
+      .links.text-center
+        = render "devise/shared/links"
