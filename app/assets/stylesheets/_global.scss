@@ -72,6 +72,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.join-us {
+  padding: 0;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
 .hidden-input-field, .input-field {
   margin-bottom: 5px;
   input {
@@ -89,5 +96,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .registration-form {
+  display: none;
+}
+
+.hide {
   display: none;
 }

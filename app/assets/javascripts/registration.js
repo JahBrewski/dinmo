@@ -24,10 +24,11 @@ $(function() {
   function failed_registration_state() {
     show_input_fields();
     $(".absolute-center").css("margin-top", "0");
+    $(".join-us").addClass("hide");
+    $(".submit").removeClass("hide");
   }
 
   function initial_state() {
-    disable_submit_button();
     action_button_handler();
   }
 
@@ -36,12 +37,11 @@ $(function() {
   }
 
   function action_button_handler() {
-   $(".action-button").click(function() {
+   $(".join-us").click(function() {
      fade_in_input_fields();
-     $(".action-button").addClass("submit-state");
-     $(".submit-state").click(function() {
-       activate_submit_button();
-     });
+     $(".join-us").addClass("hide");
+     $(".submit").removeClass("hide");
+
    });
   }
 
