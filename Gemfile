@@ -2,36 +2,17 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
-# Use postgresql as the database for Active Record
 gem 'pg'
-
-# Use nexmo for sms messages
 gem 'nexmo'
-
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
-# Bootstrap
 gem 'bootstrap-sass', '~> 3.1.1'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# Use haml for templating
 gem 'haml-rails'
-
-# Use figaro for envirionment variables
 gem 'figaro'
-
-# Use Devise for authentication
 gem 'devise'
-
-# Heroku
 gem 'rails_12factor', group: :production
+gem 'wicked'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

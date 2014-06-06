@@ -7,7 +7,6 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.save
       yield resource if block_given?
       if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
@@ -26,12 +25,12 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    root_path
+    after_signup_path(:add_username)
   end
 
 
   def after_inactive_sign_up_path_for(resource)
-    root_path
+    after_signup_path(:add_username)
   end
 
   private
