@@ -1,17 +1,29 @@
-.center-container
-  .absolute-center.text-center
-    %h1.headline EXPERTS
-    - if user_signed_in?
-      .action-button.padding Thanks for signing up!
-    - if current_user && !current_user.confirmed?
-    - else
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .hidden-input-field
-          = f.text_field :email, :autofocus => true, placeholder: "Email"
-        .hidden-input-field
-          = f.password_field :password, placeholder: "Password"
-        .action-button.join-us Join us
-        .action-button.submit.hide= f.submit "Submit"
+.container-fluid
+  .row
+    %h1.headline.text-center EXPERTS
+    .col-md-4.col-md-offset-4.text-center
+      .video-container
+        %iframe{allowfullscreen: "", frameborder: "0", height: "360", src: "//www.youtube.com/embed/bzsfexgKM30?controls=0&showinfo=0", width: "480"}
+    .col-md-4.col-md-offset-4.text-center
+      - if user_signed_in?
+        .action-button.padding Thanks for signing up!
+      - if current_user && !current_user.confirmed?
+      - else
+        .sign-up-form
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            - flash.each do |name, msg|
+              %ul.error-messages
+                - if msg.class == Array
+                  - msg.each do |message|
+                    %li= message
+                - else
+                  %li=msg
+            = devise_error_messages!
+            .hidden-input-field
+              = f.text_field :email, :autofocus => true, placeholder: "Email"
+            .hidden-input-field
+              = f.password_field :password, placeholder: "Password"
+            .action-button.join-us Join us
+            .action-button.submit.hide= f.submit "Submit"
 
 

@@ -7,7 +7,7 @@
           - @user.errors.full_messages.each do |msg|
             %li= msg
       .input-field
-        = f.text_field :username, :placeholder => "username"
+        = f.text_field :username, :placeholder => "Username"
       .input-field
         = f.text_field :expertise, :autofocus => true, placeholder: "Expertise"
       .action-button.submit

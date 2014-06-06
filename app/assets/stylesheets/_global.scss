@@ -112,3 +112,42 @@ h1, h2, h3, h4, h5, h6 {
   color: red;
 }
 
+.sign-up-form {
+  margin-top: 10px;
+  text-align: center;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  margin: 0 auto;
+  height: 0;
+  overflow: hidden;
+}
+.video-container iframe, .video-container object, .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+ } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

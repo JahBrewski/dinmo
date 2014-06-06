@@ -8,10 +8,4 @@
     = csrf_meta_tags
   %body{class: controller_name + "-" + controller.action_name}
     = render 'layouts/header'
-    - flash.each do |name, msg|
-      - if msg.class == Array
-        - msg.each do |message|
-          = content_tag :div, message, :id => "flash_#{name}", :class => "flash"
-      - else
-        #{content_tag :div, msg, :id => "flash_#{name}", :class => "flash"}
     = yield
