@@ -1,0 +1,8 @@
+.center-container
+  .absolute-center.text-center
+    %h1 Phone number
+    = form_for(@user, url: wizard_path, :method => :put) do |f|
+      .input-field
+        = f.text_field :mobile_number, :placeholder => "phone number"
+      .action-button.submit
+        = f.submit 'Finish'

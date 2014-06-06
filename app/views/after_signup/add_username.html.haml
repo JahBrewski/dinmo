@@ -1,0 +1,14 @@
+.center-container
+  .absolute-center.text-center
+    %h1 Username/Expertise
+    = form_for(@user, url: wizard_path, :method => :put) do |f|
+      - if @user.errors.any?
+        %ul.error-messages
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+      .input-field
+        = f.text_field :username, :placeholder => "username"
+      .input-field
+        = f.text_field :expertise, :autofocus => true, placeholder: "Expertise"
+      .action-button.submit
+        = f.submit 'Next'
