@@ -5,7 +5,9 @@
       .video-container
         %iframe{allowfullscreen: "", frameborder: "0", height: "360", src: "//www.youtube.com/embed/bzsfexgKM30?controls=0&showinfo=0", width: "480"}
     .col-md-4.col-md-offset-4.text-center
-      - if user_signed_in?
+      - if user_signed_in? && current_user.confirmed? == false
+        .action-button.padding= "Confirmation sent to #{current_user.email}"
+      -elsif user_signed_in?
         .action-button.padding Thanks for signing up!
       - else
         .sign-up-form
