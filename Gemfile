@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'wicked'
+gem 'twilio-ruby'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
