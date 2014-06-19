@@ -1,8 +1,10 @@
 .center-container
   .absolute-center.text-center
-    %h1 Phone number
+    %h1 Phone number/Zipcode
     = form_for(@user, url: wizard_path, :method => :put) do |f|
       .input-field
         = f.text_field :mobile_number, :placeholder => "Phone number"
+      .input-field
+        = f.text_field :zipcode, :placeholder => "Zipcode"
       .action-button.submit
         = f.submit 'Finish'

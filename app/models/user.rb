@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, :expertise, :presence => true, :if => :active_or_username?
   validates :username, :uniqueness => true, :if => :active_or_username?
-  validates :mobile_number, :presence => true, :if => :active_or_mobile_number?
+  validates :mobile_number, :zipcode, :presence => true, :if => :active_or_mobile_number?
 
 
   def active?
