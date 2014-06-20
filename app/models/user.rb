@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :username, :expertise, :tags, :presence => true, :if => :active_or_username?
   validates :username, :uniqueness => true, :if => :active_or_username?
   validates :mobile_number, :zipcode, :presence => true, :if => :active_or_mobile_number?
+  validates :mobile_number, :phony_plausible => true, :if => :active_or_mobile_number?
+  phony_normalize :mobile_number, :default_country_code => 'US'
 
 
   def active?

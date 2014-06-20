@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'figaro'
 gem 'devise'
+gem 'phony_rails'
 gem 'rails_12factor', group: :production
 gem 'wicked'
 gem 'twilio-ruby'
