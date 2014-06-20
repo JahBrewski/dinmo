@@ -8,4 +8,6 @@
         = submit_tag "Search", :name => nil
     %ul.pull-left
       - @users.each do |user|
-        %li= user.username
+        %li
+          %span= user.username
+          %span.message message
