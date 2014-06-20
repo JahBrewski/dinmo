@@ -8,6 +8,7 @@ Dinmo::Application.routes.draw do
 
   resources :after_signup
   resources :users
+  resources :conversations
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

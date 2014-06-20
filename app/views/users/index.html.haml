@@ -10,4 +10,4 @@
       - @users.each do |user|
         %li
           %span= user.username
-          %span.message message
+          %span.message= link_to "message", new_conversation_path(:pupil_id => current_user.id, :expert_id => user.id)
