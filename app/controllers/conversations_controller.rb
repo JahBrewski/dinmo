@@ -27,6 +27,10 @@ class ConversationsController < ApplicationController
   end
 
   def process_sms
+    @from = params[:From]
+    @to = params[:To]
+    
+    
     render 'process_sms.xml.erb', :content_type => 'text/xml'
   end
 
