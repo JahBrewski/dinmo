@@ -26,6 +26,9 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def process_sms
+  end
+
   private
     def conversation_params
       params.require(:conversation).permit(:pupil_id, :expert_id)

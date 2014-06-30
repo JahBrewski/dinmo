@@ -10,6 +10,8 @@ Dinmo::Application.routes.draw do
   resources :users
   resources :conversations
 
+  match 'twilio/process_sms' => 'conversations#process_sms'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
