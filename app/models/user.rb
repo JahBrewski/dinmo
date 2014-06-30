@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :if => :active_or_username?
   validates :mobile_number, :zipcode, :presence => true, :if => :active_or_mobile_number?
   validates :mobile_number, :phony_plausible => true, :if => :active_or_mobile_number?
-  #phony_normalize :mobile_number, :as => :mobile_number_normalized, :default_country_code => 'US'
+  phony_normalize :mobile_number, :as => :mobile_number_normalized, :default_country_code => 'US'
 
   has_many :conversations_as_expert, class_name: "Conversation",
                            foreign_key: "expert_id"
