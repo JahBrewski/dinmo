@@ -27,6 +27,7 @@ class ConversationsController < ApplicationController
   end
 
   def process_sms
+    render 'process_sms.xml.erb', :content_type => 'text/xml'
   end
 
   private
