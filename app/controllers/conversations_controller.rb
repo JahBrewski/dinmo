@@ -40,10 +40,16 @@ class ConversationsController < ApplicationController
     @message = params[:Body]
     if @from == @conversation.expert
       # send to pupil
-      @to = @conversation.pupil.mobile_number_normalized
+      @@client.account.messages.create(
+        :from => @conversation.routing_number,
+        :to => @conversation.pupil.mobile_number_normalized,
+        :body => @message
     else
       # send to expert
-      @to = @conversation.expert.mobile_number_normalized
+      @@client.account.messages.create(
+        :from => @conversation.routing_number,
+        :to => @conversation.expert.mobile_number_normalized,
+        :body => @message
     end
     
     render 'process_sms.xml.erb', :content_type => 'text/xml'
