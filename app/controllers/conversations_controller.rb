@@ -31,11 +31,12 @@ class ConversationsController < ApplicationController
     puts "From " + params[:From]
     puts "To " + params[:To]
     #puts "From user " + @from
-    #
-    puts "From ID " + @from.id
+    @from_id = @from.id.to_s
+    
+    puts "From ID " + @from_id
 
     @routing_num = params[:To]
-    @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
+    @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from_id, @from_id)[0]
     
     #puts "Conversation " + @convo
     @message = params[:Body]
