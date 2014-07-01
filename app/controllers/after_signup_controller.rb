@@ -13,11 +13,12 @@ class AfterSignupController < ApplicationController
     @user.update_attribute(:status, step.to_s)
     @user.update_attribute(:status, 'active') if step == steps.last
     @user.update_attributes(user_params)
+    @user.update_normalized_number
     render_wizard @user
   end
 
   def finish_wizard_path
-    root_path
+    users_path
   end
 
   private

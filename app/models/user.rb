@@ -6,13 +6,15 @@ class User < ActiveRecord::Base
   validates :username, :expertise, :tags, :presence => true, :if => :active_or_username?
   validates :username, :uniqueness => true, :if => :active_or_username?
   validates :mobile_number, :zipcode, :presence => true, :if => :active_or_mobile_number?
-  validates :mobile_number, :phony_plausible => true, :if => :active_or_mobile_number?
-  phony_normalize :mobile_number, :as => :mobile_number_normalized, :default_country_code => 'US'
 
   has_many :conversations_as_expert, class_name: "Conversation",
                            foreign_key: "expert_id"
   has_many :conversations_as_pupil, class_name: "Conversation",
                            foreign_key: "pupil_id"
+
+  def update_normalized_number
+    update_attribute('mobile_number_normalized', mobile_number.phony_formatted(:normalize => :US, :format => :international, :spaces => ''))
+  end
 
   def formatted_number
     mobile_number.phony_formatted(:normalize => :US, :format => :international, :spaces => '')
