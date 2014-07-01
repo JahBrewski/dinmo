@@ -43,13 +43,13 @@ class ConversationsController < ApplicationController
       @@client.account.messages.create(
         :from => @conversation.routing_number,
         :to => @conversation.pupil.mobile_number_normalized,
-        :body => @message
+        :body => @message)
     else
       # send to expert
       @@client.account.messages.create(
         :from => @conversation.routing_number,
         :to => @conversation.expert.mobile_number_normalized,
-        :body => @message
+        :body => @message)
     end
     
     render 'process_sms.xml.erb', :content_type => 'text/xml'
