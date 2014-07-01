@@ -5,7 +5,6 @@ class ConversationsController < ApplicationController
   @@client = Twilio::REST::Client.new account_sid, auth_token
 
   def new
-    binding.pry
     @pupil = params[:pupil_id]
     @expert = params[:expert_id]
     @conversation = Conversation.new
