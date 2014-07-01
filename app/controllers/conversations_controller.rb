@@ -27,8 +27,8 @@ class ConversationsController < ApplicationController
   end
 
   def process_sms
-    @from = User.where(:mobile_number_normalized => params[:From])
-    @conversation = Conversation.where(:routing_number => params[:To]).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)
+    @from = User.where(:mobile_number_normalized => params[:From])[0]
+    @conversation = Conversation.where(:routing_number => params[:To]).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     @message = params[:Body]
     if @from == @conversation.expert
       # send to pupil
