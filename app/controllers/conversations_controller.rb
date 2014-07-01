@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
     #puts "From user " + @from
 
     @routing_num = params[:To]
-    @convo = Conversation.where(:routing_number => @routing_num)[0]
+    @convo = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)
     
     @conversation = Conversation.where(:routing_number => params[:To]).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     puts "Conversation " + @convo
