@@ -28,6 +28,9 @@ class ConversationsController < ApplicationController
 
   def process_sms
     @from = User.where(:mobile_number_normalized => params[:From])[0]
+    puts params[:From]
+    puts params[:To]
+    
     binding.pry
     @conversation = Conversation.where(:routing_number => params[:To]).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     @message = params[:Body]
