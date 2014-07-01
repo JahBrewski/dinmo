@@ -30,7 +30,7 @@ class ConversationsController < ApplicationController
     @from = User.where(:mobile_number_normalized => params[:From])[0]
     puts "From " + params[:From]
     puts "To " + params[:To]
-    puts "From user " + @from
+    #puts "From user " + @from
 
     @routing_num = params[:To]
     @convo = Conversation.where(:routing_number => @routing_num)
