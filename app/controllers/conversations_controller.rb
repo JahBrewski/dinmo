@@ -27,9 +27,16 @@ class ConversationsController < ApplicationController
   end
 
   def process_sms
-    @from = params[:From]
-    @to = params[:To]
-    
+    @from = User.where(:mobile_number_normalized => params[:From])
+    @conversation = Conversation.where(:routing_number => params[:To]).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)
+    @message = params[:Body]
+    if @from == @conversation.expert
+      # send to pupil
+      @to = @conversation.pupil.mobile_number_normalized
+    else
+      # send to expert
+      @to = @conversation.expert.mobile_number_normalized
+    end
     
     render 'process_sms.xml.erb', :content_type => 'text/xml'
   end
