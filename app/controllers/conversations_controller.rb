@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
       @pupil_num = User.find(@conversation.pupil_id).formatted_number
       @expert_num = User.find(@conversation.expert_id).formatted_number
       @@client.account.messages.create(
-        :from => @conversation.routing_number
+        :from => @conversation.routing_number,
         :to => @expert_num,
         :body => params[:conversation][:message])
       redirect_to users_path
