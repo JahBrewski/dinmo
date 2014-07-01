@@ -37,7 +37,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     
     #puts "Conversation " + @convo
-    puts "convo pupil mobile number: " + @conversation.pupil.mobile_number_normalized
+    puts "convo pupil mobile number: " + @conversation.pupil.id
     @message = params[:Body]
     if @from == @conversation.expert
       # send to pupil
