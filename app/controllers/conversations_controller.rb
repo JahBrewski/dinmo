@@ -31,7 +31,7 @@ class ConversationsController < ApplicationController
     puts "From " + params[:From]
     puts "To " + params[:To]
     #puts "From user " + @from
-    @from_id = @from.id.to_s
+    @from_id = @from.id.to_i
     
     puts "From ID " + @from_id
 
