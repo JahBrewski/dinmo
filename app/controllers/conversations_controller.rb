@@ -31,6 +31,8 @@ class ConversationsController < ApplicationController
     puts "From " + params[:From]
     puts "To " + params[:To]
     #puts "From user " + @from
+    #
+    puts "From ID " + @from.id
 
     @routing_num = params[:To]
     @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
