@@ -14,8 +14,8 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversation_params)
     if @conversation.save
       @conversation.update_attribute("routing_number", "+17792038833")
-      @pupil_num = User.find(@conversation.pupil_id).formatted_number
-      @expert_num = User.find(@conversation.expert_id).formatted_number
+      @pupil_num = User.find(@conversation.pupil_id).mobile_number_normalized
+      @expert_num = User.find(@conversation.expert_id).mobile_number_normalized
       @@client.account.messages.create(
         :from => @conversation.routing_number,
         :to => @expert_num,
