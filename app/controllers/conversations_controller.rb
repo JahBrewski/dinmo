@@ -14,10 +14,11 @@ class ConversationsController < ApplicationController
   def create
     @conversation = Conversation.new(conversation_params)
     if @conversation.save
+      @conversation.update_attribute("routing_number", "+17792038833")
       @pupil_num = User.find(@conversation.pupil_id).formatted_number
       @expert_num = User.find(@conversation.expert_id).formatted_number
       @@client.account.messages.create(
-        :from => "+17792038833",
+        :from => @conversation.routing_number
         :to => @expert_num,
         :body => params[:conversation][:message])
       redirect_to users_path
