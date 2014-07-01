@@ -22,7 +22,7 @@ class AfterSignupController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :mobile_number, :expertise, :zipcode, :tags)
+    params.require(:user).permit(:username, :email, :password, :mobile_number, :mobile_number_normalized, :expertise, :zipcode, :tags)
   end
   
 end
