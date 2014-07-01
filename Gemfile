@@ -11,6 +11,7 @@ gem 'haml-rails'
 gem 'figaro'
 gem 'devise'
 gem 'phony_rails'
+gem 'pry'
 gem 'rails_12factor', group: :production
 gem 'wicked'
 gem 'twilio-ruby'
@@ -30,7 +31,6 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'pry'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
