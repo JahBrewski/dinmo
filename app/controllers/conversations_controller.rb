@@ -78,6 +78,7 @@ class ConversationsController < ApplicationController
           @@client.account.incoming_phone_numbers.create(:phone_number => number)
           Number.create(number: number)
           number
+        end
       end
     end
 end
