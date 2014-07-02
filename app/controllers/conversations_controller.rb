@@ -14,7 +14,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversation_params)
     @routing_number = get_routing_number(@conversation)
     if @conversation.save
-      @conversation.update_attribute("routing_number", "+17792038833")
+      @conversation.update_attribute("routing_number", @routing_number)
       @pupil_num = User.find(@conversation.pupil_id).mobile_number_normalized
       @expert_num = User.find(@conversation.expert_id).mobile_number_normalized
       @@client.account.messages.create(
