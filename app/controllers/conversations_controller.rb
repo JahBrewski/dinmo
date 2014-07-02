@@ -12,8 +12,9 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.new(conversation_params)
+    @routing_number = get_routing_number(@conversation)
     if @conversation.save
-      @conversation.update_attribute("routing_number", "+17792038833")
+      @conversation.update_attribute("routing_number", @routing_number)
       @pupil_num = User.find(@conversation.pupil_id).mobile_number_normalized
       @expert_num = User.find(@conversation.expert_id).mobile_number_normalized
       @@client.account.messages.create(
@@ -58,11 +59,26 @@ class ConversationsController < ApplicationController
       pupil = conversation.pupil
       expert = conversation.expert
       if pupil.conversations.empty? && expert.conversations.empty?
-        # select random number from available numbers
+        Number.order("RANDOM()").first.number
       else
-        pupil_nums = pupil.conversations.collect { |c| c.routing_num }
-        expert_nums = expert.conversations.collect { |c| c.routing_num }
-
+       
+        pupil_nums = pupil.conversations.collect { |c| c.routing_number }
+        expert_nums = expert.conversations.collect { |c| c.routing_number }
+        used_numbers = pupil_nums + expert_nums
+        
+        purchased_numbers = Number.pluck(:number)
+        available_numbers = purchased_numbers - used_numbers
+        if available_numbers.any?
+          # choose a random available number
+          available_numbers.sample.number
+        else
+          # purchase a new number
+          numbers = @@client.account.available_phone_numbers.get('US').local.list
+          number = numbers[0].phone_number
+          @@client.account.incoming_phone_numbers.create(:phone_number => number)
+          Number.create(number: number)
+          number
+        end
       end
     end
 end
