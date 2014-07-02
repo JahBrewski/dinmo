@@ -88,7 +88,8 @@ class ConversationsController < ApplicationController
           # purchase a new number
           numbers = @@client.account.available_phone_numbers.get('US').local.list
           number = numbers[0].phone_number
-          @@client.account.incoming_phone_numbers.create(:phone_number => number)
+          twilio_num = @@client.account.incoming_phone_numbers.create(:phone_number => number)
+          twilio_num.update(:sms_application_sid => "APec7c548232e8c91f607986d9881f39b6")
           Number.create(:number => number)
           number
         end
