@@ -32,27 +32,40 @@ class ConversationsController < ApplicationController
     @routing_num = params[:To]
     @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     
-    @message = params[:Body]
     if @from == @conversation.expert
       # send to pupil
-      @@client.account.messages.create(
-        :from => @conversation.routing_number,
-        :to => @conversation.pupil.mobile_number_normalized,
-        :body => @message)
+      @body = get_pupil_message_body
+      send_sms_message(@conversations.routing_number, @conversation.pupil.mobile_number_normalized, @body)
     else
       # send to expert
+      @body = params[:Body]
       @@client.account.messages.create(
         :from => @conversation.routing_number,
         :to => @conversation.expert.mobile_number_normalized,
-        :body => @message)
+        :body => @body)
     end
     
     render 'process_sms.xml.erb', :content_type => 'text/xml'
   end
 
   private
+    def send_sms_message(from, to, body)
+      @@client.account.messages.create(
+        :from => from,
+        :to => to,
+        :body => body)
+    end
+
     def conversation_params
       params.require(:conversation).permit(:pupil_id, :expert_id)
+    end
+
+    def get_pupil_message_body
+      if params[:Body] =~ /end/i
+        "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation."
+      else
+        params[:Body]
+      end
     end
 
     def get_routing_number(conversation)
@@ -76,7 +89,7 @@ class ConversationsController < ApplicationController
           numbers = @@client.account.available_phone_numbers.get('US').local.list
           number = numbers[0].phone_number
           @@client.account.incoming_phone_numbers.create(:phone_number => number)
-          Number.create(number: number)
+          Number.create(:number => number)
           number
         end
       end
