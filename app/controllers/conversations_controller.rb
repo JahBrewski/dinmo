@@ -83,7 +83,7 @@ class ConversationsController < ApplicationController
         available_numbers = purchased_numbers - used_numbers
         if available_numbers.any?
           # choose a random available number
-          available_numbers.sample.number
+          available_numbers.sample
         else
           # purchase a new number
           numbers = @@client.account.available_phone_numbers.get('US').local.list
