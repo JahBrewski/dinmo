@@ -68,7 +68,7 @@ class ConversationsController < ApplicationController
         
         purchased_numbers = Number.pluck(:number)
         available_numbers = purchased_numbers - used_numbers
-        if available_numbers
+        if available_numbers.any?
           # choose a random available number
           available_numbers.sample.number
         else
