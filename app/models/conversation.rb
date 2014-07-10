@@ -12,7 +12,7 @@ class Conversation < ActiveRecord::Base
     end
   end
 
-  def outdated
+  def outdated?
     # Conversation is considered outdated if the last message was sent over an hour ago.
     ( Time.now - last_message_sent_at ) / 60 / 60 > 1
   end
