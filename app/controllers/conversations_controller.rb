@@ -49,6 +49,7 @@ class ConversationsController < ApplicationController
 
   private
     def send_sms_message(from, to, body, conversation)
+      body = "My Experts user #{@from.username}: " + body
       @@client.account.messages.create(
         :from => from,
         :to => to,
