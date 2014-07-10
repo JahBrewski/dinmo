@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
-  account_sid = 'AC2a8835d662eb2fa5b818eebcf9f11290'
-  auth_token = '5d255dcb6c2ffe294de1b824fe5fec5f'
+  account_sid = ENV["TWILIO_SID"]
+  auth_token = ENV["TWILIO_TOKEN"]
+  sms_application_sid = ENV["TWILIO_SMS_APPLICATION_SID"]
 
   @@client = Twilio::REST::Client.new account_sid, auth_token
 
