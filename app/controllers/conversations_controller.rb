@@ -13,6 +13,7 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.new(conversation_params)
+    @from = @conversation.pupil
     @routing_number = get_routing_number(@conversation)
     if @conversation.save
       @conversation.update_attribute("routing_number", @routing_number)
