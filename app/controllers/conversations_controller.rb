@@ -31,7 +31,7 @@ class ConversationsController < ApplicationController
     if @from == @conversation.expert
       # send to pupil
       @body = get_pupil_message_body
-      send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, @body)
+      send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, @body, @conversation)
     else
       # send to expert
       @body = params[:Body]
