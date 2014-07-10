@@ -15,12 +15,8 @@ class ConversationsController < ApplicationController
     @routing_number = get_routing_number(@conversation)
     if @conversation.save
       @conversation.update_attribute("routing_number", @routing_number)
-      @pupil_num = User.find(@conversation.pupil_id).mobile_number_normalized
       @expert_num = User.find(@conversation.expert_id).mobile_number_normalized
-      @@client.account.messages.create(
-        :from => @conversation.routing_number,
-        :to => @expert_num,
-        :body => params[:conversation][:message])
+      send_sms_message(@conversation.routing_number, @expert_num, params[:conversation][:message], @conversation)
       redirect_to users_path
     else
       render action: "new"
@@ -39,21 +35,18 @@ class ConversationsController < ApplicationController
     else
       # send to expert
       @body = params[:Body]
-      @@client.account.messages.create(
-        :from => @conversation.routing_number,
-        :to => @conversation.expert.mobile_number_normalized,
-        :body => @body)
+      send_sms_message(@conversation.routing_number, @conversation.expert.mobile_number_normalized, @body, @conversation)
     end
-    
     render 'process_sms.xml.erb', :content_type => 'text/xml'
   end
 
   private
-    def send_sms_message(from, to, body)
+    def send_sms_message(from, to, body, conversation)
       @@client.account.messages.create(
         :from => from,
         :to => to,
         :body => body)
+      conversation.update_attribute("last_message_sent_at", Time.now)
     end
 
     def conversation_params
