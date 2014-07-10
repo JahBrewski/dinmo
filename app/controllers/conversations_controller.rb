@@ -31,8 +31,14 @@ class ConversationsController < ApplicationController
     
     if @from == @conversation.expert
       # send to pupil
-      @body = get_pupil_message_body
-      send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, @body, @conversation)
+      if params[:Body] =~ /^\s*responded/i
+        body = "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation."
+        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
+        @conversation.destroy
+      else
+        body = params[:Body]
+        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
+      end
     else
       # send to expert
       @body = params[:Body]
@@ -55,7 +61,7 @@ class ConversationsController < ApplicationController
     end
 
     def get_pupil_message_body
-      if params[:Body] =~ /end/i
+      if params[:Body] =~ /^\s*responded/i
         "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation."
       else
         params[:Body]
