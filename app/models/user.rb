@@ -36,6 +36,20 @@ class User < ActiveRecord::Base
     status.include?('mobile_number') || active?
   end
 
+  def available?
+    self.available == true
+  end
+
+  def available!
+    self.available = true
+    save!
+  end
+
+  def unavailable!
+    self.available = false
+    save!
+  end
+
   def self.search(query)
     query = query.gsub("?","")
     query = query.gsub("!","")

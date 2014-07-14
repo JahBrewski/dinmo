@@ -7,7 +7,12 @@ Dinmo::Application.routes.draw do
   root 'static_pages#home'
 
   resources :after_signup
-  resources :users
+  resources :users do
+    member do
+      put :available
+      put :unavailable
+    end
+  end
   resources :conversations
 
   get 'twilio/process_sms' => 'conversations#process_sms'

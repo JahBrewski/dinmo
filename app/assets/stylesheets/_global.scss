@@ -133,7 +133,32 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
  } 
 
+ .circle {
+   border-radius: 50%;
+   width: 25px;
+   height: 25px;
+ }
+ .circle-item {
+   padding: 15px 2px 10px 2px;
+   cursor: pointer;
+ }
+ .green {
+   background: #32CD32;
+ }
+ .red {
+   background: red;
+ }
+ .inactivate {
+   opacity: .4;
+ }
+ .activate {
+   opacity: 1;
+ }
 
+#available, #unavailable {
+  margin-left: -10px;
+  margin-right: -10px;
+}
 
 
 

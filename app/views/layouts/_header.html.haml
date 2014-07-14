@@ -13,6 +13,12 @@
       #main-nav-collapse.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
+            %li#available{:class => (current_user.available? ? "activate" : "inactivate")}
+              = link_to available_user_path(current_user), { 'data-remote' => true, 'data-method' => 'PUT' } do
+                .circle-item.circle.green
+            %li#unavailable{:class => (current_user.available? ? "inactivate" : "activate")}
+              = link_to unavailable_user_path(current_user), {'data-remote' => true, 'data-method' => 'PUT' } do
+                .circle-item.circle.red
             %li= link_to "LOGOUT", destroy_user_session_path, :method => :delete
           - else
             %li= link_to "LOGIN", new_user_session_path
