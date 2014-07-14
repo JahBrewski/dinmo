@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:search]
-      @users = User.search(params[:search]) | [JON_MCEWEN]
+      @users = User.search(params[:search]).where(available: true) | [JON_MCEWEN]
     else
       @users = [JON_MCEWEN]
     end
