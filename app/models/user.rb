@@ -4,13 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, :expertise, :tags, :presence => true, :if => :active_or_username?
-  validates :username, :uniqueness => true, :if => :active_or_username?
+  validates :username, :uniqueness => { :case_sensitive => false }, :if => :active_or_username?
   validates :mobile_number, :zipcode, :presence => true, :if => :active_or_mobile_number?
 
   has_many :conversations_as_expert, class_name: "Conversation",
                            foreign_key: "expert_id"
   has_many :conversations_as_pupil, class_name: "Conversation",
                            foreign_key: "pupil_id"
+
+  attr_accessor :login
 
   def update_normalized_number
     update_attribute('mobile_number_normalized', mobile_number.phony_formatted(:normalize => :US, :format => :international, :spaces => ''))
@@ -55,5 +57,14 @@ class User < ActiveRecord::Base
     query = query.gsub("!","")
     query = query.gsub(" ","|")
     where("tags @@ '#{query}'::tsquery")
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
   end
 end
