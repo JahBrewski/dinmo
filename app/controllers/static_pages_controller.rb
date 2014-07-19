@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
       redirect_to users_url
     end
   end
+
+  def terms
+  end
 end

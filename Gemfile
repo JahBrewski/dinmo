@@ -13,6 +13,7 @@ gem 'devise'
 gem 'phony_rails'
 gem 'rails_12factor', group: :production
 gem 'wicked'
+gem 'rdiscount'
 gem 'twilio-ruby'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

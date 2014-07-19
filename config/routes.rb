@@ -17,6 +17,10 @@ Dinmo::Application.routes.draw do
 
   get 'twilio/process_sms' => 'conversations#process_sms'
 
+  match '/terms',           to:     'static_pages#terms',        via: 'get'
+
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
