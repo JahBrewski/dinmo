@@ -55,10 +55,9 @@ class User < ActiveRecord::Base
   end
 
   def self.search(query)
-    query = query.gsub("?","")
-    query = query.gsub("!","")
+    query = query.gsub /!|\?/,""
     query = query.gsub(" ","|")
-    where("tags @@ '#{query}'::tsquery")
+    where("tags @@ to_tsquery('#{query}')")
   end
 
   def self.find_for_database_authentication(warden_conditions)
