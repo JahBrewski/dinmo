@@ -172,3 +172,29 @@ hr.dashed-break {
   border-bottom: 1px dashed #ccc;
   background: #999;
 }
+
+.center { text-align: center; }
+
+.conversation {
+  form {
+    margin: 0 auto;
+    width: 50%;
+  }
+  input, textarea {
+    width: 100%;
+  }
+  .submit {
+    width: 150px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .conversation {
+    form {
+      width: 90%;
+    }
+  }
+}
+
+

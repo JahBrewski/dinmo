@@ -1,11 +1,10 @@
-.container.text-center
-  %h1 Start conversation
-
+%h1.center Start conversation
+.conversation
   = form_for @conversation do |f|
-    = f.text_area :message
+    = f.text_area :message, :rows => "5"
     = f.hidden_field :pupil_id, :value => @pupil
     = f.hidden_field :expert_id, :value => @expert
     .submit
       = f.submit
 
-    
+      
