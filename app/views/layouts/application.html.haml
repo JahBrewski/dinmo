@@ -8,4 +8,5 @@
     = csrf_meta_tags
   %body{class: controller_name + "-" + controller.action_name}
     = render 'layouts/header'
-    = yield
+    .main-container
+      = yield
