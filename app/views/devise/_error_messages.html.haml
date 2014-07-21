@@ -1,0 +1,9 @@
+- flash.each do |name, msg|
+  %ul.error-messages
+    - if msg.class == Array
+      - msg.each do |message|
+        %li= message
+    - else
+      %li=msg
+= devise_error_messages!
+

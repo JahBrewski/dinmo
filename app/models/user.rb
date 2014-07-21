@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, :expertise, :tags, :presence => true, :if => :active_or_username?
   validates :username, :uniqueness => { :case_sensitive => false }, :if => :active_or_username?
-  validates :mobile_number, :zipcode, :presence => true, :if => :active_or_mobile_number?
+  validates :mobile_number, :zipcode, :first_name, :last_name, :presence => true, :if => :active_or_mobile_number?
+  validates :mobile_number, uniqueness: true, :if => :active_or_mobile_number? 
 
   has_many :conversations_as_expert, class_name: "Conversation",
                            foreign_key: "expert_id"
