@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     if params[:search]
       @users = User.search(params[:search]).where(available: true) | [JON_MCEWEN]
     else
-      @users = [JON_MCEWEN]
+      @users = []
+      [JON_MCEWEN]
     end
   end
 
