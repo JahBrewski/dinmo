@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :load_user, :only => [:available, :unavailable]
- # JON_MCEWEN = User.find_by username: "jonmcewen"
+  JON_MCEWEN = User.find_by username: "jonmcewen"
   def show
   end
 
@@ -14,10 +14,9 @@ class UsersController < ApplicationController
 
   def index
     if params[:search]
-      @users = User.search(params[:search]).where(available: true)# | [JON_MCEWEN]
+      @users = User.search(params[:search]).where(available: true) | [JON_MCEWEN]
     else
-      @users = []
-      #[JON_MCEWEN]
+      @users = [JON_MCEWEN]
     end
   end
 
