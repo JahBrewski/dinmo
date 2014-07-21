@@ -7,9 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Number.create(number: "+17792038833")
 User.create! :username => 'jonmcewen', :email => 'jon@myexperts.co', :password => 'sunset11', :mobile_number => '662-549-7734', :mobile_number_normalized => "+16625497734", :first_name => 'Jon', :last_name => 'McEwen', :expertise => 'My Experts', tags: 'networking, dinmo, myexperts, craft beer, pizza, food, restaurants, nashville'
-Number.create! :number => "+12526487265"
-Number.create! :number => "+14233539072"
-Number.create! :number => "+12525090502"
-Number.create! :number => "+14198276161"
-Number.create! :number => "+14198693222"
-Number.create! :number => "+13168544139"
+
+purchased_numbers = [
+"+12526487265",
+"+14233539072",
+"+12525090502",
+"+14198276161",
+"+14198693222",
+"+13168544139"]
+
+purchased_numbers.each do |n|
+  Number.create! :number => n
+end
