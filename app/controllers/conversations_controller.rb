@@ -71,7 +71,7 @@ class ConversationsController < ApplicationController
     def process_rating_message
       if params[:Body] =~/^[1-5]$/
         rating = params[:Body].to_i
-        rate_expert(rating)
+        #rate_expert(rating)
         body = "Thanks for rating #{@conversation.expert.username.capitalize}!"
         send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
         @conversation.destroy
