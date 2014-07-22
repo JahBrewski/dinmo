@@ -31,7 +31,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     
     if @from == @conversation.expert
-      proces_expert_message
+      process_expert_message
     else
       process_pupil_message
     end
