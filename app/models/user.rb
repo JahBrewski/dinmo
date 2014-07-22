@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
                            foreign_key: "expert_id"
   has_many :conversations_as_pupil, class_name: "Conversation",
                            foreign_key: "pupil_id"
+  has_many :ratings_as_rater, class_name: "Rating",
+                           foreign_key: "rater_id"
+  has_many :ratings_as_rated, class_name: "Rating",
+                           foreign_key: "rated_id"
   validates :terms, acceptance: true
 
   attr_accessor :login
