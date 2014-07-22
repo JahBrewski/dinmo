@@ -63,7 +63,7 @@ class ConversationsController < ApplicationController
 
     def process_response_message
       @conversation.update_attribute("status", "awaiting_rating")
-      body = "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation. Please rate your expert by entering a single digit 1-5."
+      body = "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation. Please rate your expert by entering a single digit from 1 to 5. Five being the highest rating and one being the lost."
       send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
     end
 
