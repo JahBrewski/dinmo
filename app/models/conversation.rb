@@ -12,8 +12,17 @@ class Conversation < ActiveRecord::Base
     end
   end
 
+  def rateable?
+    status == 'rateable'
+  end
+
+  def awaiting_rating?
+    status == 'awaiting_rating'
+  end
+
   def outdated?
     # Conversation is considered outdated if the last message was sent over an hour ago.
     ( Time.now - last_message_sent_at ) / 60 / 60 > 1
   end
+
 end

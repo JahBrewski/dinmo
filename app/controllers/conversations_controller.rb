@@ -31,24 +31,56 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
     
     if @from == @conversation.expert
-      # send to pupil
-      if params[:Body] =~ /^\s*responded/i
-        body = "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation."
-        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
-        @conversation.destroy
-      else
-        body = params[:Body]
-        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
-      end
+      proces_expert_message
     else
-      # send to expert
-      @body = params[:Body]
-      send_sms_message(@conversation.routing_number, @conversation.expert.mobile_number_normalized, @body, @conversation)
+      process_pupil_message
     end
     render 'process_sms.xml.erb', :content_type => 'text/xml'
   end
 
   private
+    def process_expert_message
+      if is_response_message
+        process_response_message
+      else
+        body = params[:Body]
+        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
+      end
+    end
+
+    def process_pupil_message
+      if @conversation.awaiting_rating?
+        process_rating_message
+      else
+        body = params[:Body]
+        send_sms_message(@conversation.routing_number, @conversation.expert.mobile_number_normalized, body, @conversation)
+      end
+    end
+
+    def is_response_message
+      params[:Body] =~ /^\s*responded/i
+    end
+
+    def process_response_message
+      @conversation.update_attribute("status", "awaiting_rating")
+      body = "Thanks for using My Experts! #{@conversation.expert.username.capitalize} has ended this conversation. Please rate your expert by entering a single digit 1-5."
+      send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
+      @conversation.destroy
+    end
+
+    def process_rating_message
+      if params[:Body] =~/^[1-5]$/
+        rating = params[:Body].to_i
+        rate_expert(rating)
+        body = "Thanks for rating #{@conversation.expert.username.capitalize}!"
+        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
+        @conversation.destroy
+      else
+        body = "Please enter a single digit from one to five."
+        send_sms_message(@conversation.routing_number, @conversation.pupil.mobile_number_normalized, body, @conversation)
+      end
+    end
+
     def send_sms_message(from, to, body, conversation)
       body = "My Experts user #{@from.username}: " + body
       @@client.account.messages.create(
