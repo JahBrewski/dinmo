@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   def create
     @conversation = Conversation.new(conversation_params)
     @from = @conversation.pupil
-    @routing_number = get_routing_number(@conversation)
+    @routing_number = @conversation.get_routing_number
     if @conversation.save
       @conversation.update_attribute("routing_number", @routing_number)
       @expert_num = User.find(@conversation.expert_id).mobile_number_normalized
