@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725031222) do
+ActiveRecord::Schema.define(version: 20140725163553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140725031222) do
     t.string   "routing_number"
     t.datetime "last_message_sent_at"
     t.string   "status",               default: "active"
+    t.integer  "number_id"
   end
 
   create_table "numbers", force: true do |t|
