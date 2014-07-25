@@ -6,7 +6,9 @@ class Conversation < ActiveRecord::Base
   
   def self.clean_conversations
     find_each do |conversation|
-      if conversation.outdated?
+      if conversation.has_not_sent_message?
+        conversation.destroy
+      elsif conversation.outdated?
         conversation.destroy
       end
     end
@@ -18,6 +20,14 @@ class Conversation < ActiveRecord::Base
 
   def awaiting_rating?
     status == 'awaiting_rating'
+  end
+
+  def has_sent_message?
+    last_message_sent_at != nil
+  end
+
+  def has_not_sent_message?
+    last_message_sent_at == nil
   end
 
   def outdated?
