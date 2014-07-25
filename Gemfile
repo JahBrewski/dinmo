@@ -13,6 +13,7 @@ gem 'devise'
 gem 'phony_rails'
 gem 'rails_12factor', group: :production
 gem 'wicked'
+gem 'rails_admin'
 gem 'rdiscount'
 gem 'twilio-ruby'
 

@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def is_admin?
+    admin == true
+  end
+
   def self.search(query)
     query = query.gsub /!|\?/,""
     query = query.gsub(" ","|")
