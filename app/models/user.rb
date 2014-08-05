@@ -41,9 +41,11 @@ class User < ActiveRecord::Base
   end
 
   def google_maps_link
-    if address
+    if address && address != ""
       address.gsub!(/\s+/,"+")
       "https://maps.google.com?q=#{address}"
+    else
+      false
     end
   end
 
