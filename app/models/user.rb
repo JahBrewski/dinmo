@@ -40,6 +40,13 @@ class User < ActiveRecord::Base
     status == 'active'
   end
 
+  def google_maps_link
+    if address
+      address.gsub!(/\s+/,"+")
+      "https://maps.google.com?q=#{address}"
+    end
+  end
+
   def active_or_username?
     status.include?('username') || active?
   end
