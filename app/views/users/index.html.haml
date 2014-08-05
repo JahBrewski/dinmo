@@ -11,4 +11,6 @@
         - @users.each do |user|
           %li
             %span= user.username
+            - if user.menu.exists?
+              %span.menu= link_to "menu", user.menu.url
             %span.message= link_to "message", new_conversation_path(:pupil_id => current_user.id, :expert_id => user.id)

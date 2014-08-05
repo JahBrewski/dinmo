@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   has_many :ratings_as_rated, class_name: "Rating",
                            foreign_key: "rated_id"
   validates :terms, acceptance: true
+  
+  has_attached_file :menu
+  validates_attachment :menu,
+    :content_type => { :content_type => "application/pdf" }
 
   attr_accessor :login
 

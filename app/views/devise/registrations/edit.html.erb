@@ -6,9 +6,24 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
+  <div><%= f.label :first_name %>
+  <%= f.text_field :first_name, :autofocus => true %></div>
+
+  <div><%= f.label :last_name %>
+  <%= f.text_field :last_name, :autofocus => true %></div>
+
+  <div><%= f.label :mobile_number %>
+  <%= f.text_field :mobile_number, :autofocus => true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+
+  <div><%= f.label :menu %>
+  <%= f.file_field :menu %></div>
 
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
