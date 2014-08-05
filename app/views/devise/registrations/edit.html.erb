@@ -21,6 +21,12 @@
   <div><%= f.label :address %><br />
   <%= f.text_area :address, :autofocus => true %></div>
 
+  <div><%= f.label :zipcode %><br />
+  <%= f.text_field :zipcode, :autofocus => true %></div>
+
+  <div><%= f.label :tags %><br />
+  <%= f.text_field :tags, :autofocus => true %></div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

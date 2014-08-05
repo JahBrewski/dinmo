@@ -41,9 +41,9 @@ class User < ActiveRecord::Base
   end
 
   def google_maps_link
-    if address && address != ""
+    if address && address != "" && zipcode && zipcode != ""
       address.gsub!(/\s+/,"+")
-      "https://maps.google.com?q=#{address}"
+      "https://maps.google.com?q=#{address}+#{zipcode}"
     else
       false
     end
