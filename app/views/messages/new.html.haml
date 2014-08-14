@@ -1,0 +1,7 @@
+%h1.center Reply
+.conversation
+  = form_for @message do |f|
+    = f.text_area :body, :rows => "5"
+    = f.hidden_field :conversation_id, :value => @conversation.id
+    .submit
+      = f.submit

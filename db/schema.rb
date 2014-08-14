@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805184520) do
+ActiveRecord::Schema.define(version: 20140814214143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20140805184520) do
     t.datetime "last_message_sent_at"
     t.string   "status",               default: "active"
     t.integer  "number_id"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "numbers", force: true do |t|
@@ -75,6 +82,8 @@ ActiveRecord::Schema.define(version: 20140805184520) do
     t.integer  "menu_file_size"
     t.datetime "menu_updated_at"
     t.string   "address"
+    t.boolean  "business",                 default: false
+    t.string   "static_number"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

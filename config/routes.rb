@@ -15,6 +15,7 @@ Dinmo::Application.routes.draw do
     end
   end
   resources :conversations
+  resources :messages
 
   get 'twilio/process_sms' => 'conversations#process_sms'
 

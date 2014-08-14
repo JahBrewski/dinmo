@@ -1,7 +1,9 @@
 class Conversation < ActiveRecord::Base
+  default_scope { order(:created_at => :desc) }
   belongs_to :pupil, class_name: "User"
   belongs_to :expert, class_name: "User"
   belongs_to :number
+  has_many :messages
   attr_accessor :message
   
   def self.clean_conversations
@@ -77,6 +79,10 @@ class Conversation < ActiveRecord::Base
 
   def is_response_message(body)
     body =~ /^\s*responded/i
+  end
+
+  def process_static_message(body, from_user)
+    self.messages.create(:body => body)
   end
 
   def process_expert_message(body, from_user)
