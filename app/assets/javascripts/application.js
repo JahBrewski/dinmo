@@ -15,10 +15,12 @@
 //= bootstrap
 //= require_tree .
 jQuery(document).ready(function() {
-  setTimeout(function() {
-    var source = new EventSource('/events');
-    source.addEventListener("message", function(e) {
-      window.location.reload();
-    });
-  }, 1);
+  if ($(".messages-index").length > 0) {
+    setTimeout(function() {
+      var source = new EventSource('/events');
+      source.addEventListener("message", function(e) {
+        window.location.reload();
+      });
+    }, 1);
+  }
 });
