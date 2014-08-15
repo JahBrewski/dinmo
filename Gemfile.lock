@@ -118,8 +118,6 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    puma (2.9.0)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-pjax (0.7.0)
       nokogiri (~> 1.5)
@@ -222,7 +220,6 @@ DEPENDENCIES
   pg
   phony_rails
   pry
-  puma
   rails (= 4.0.0)
   rails_12factor
   rails_admin
