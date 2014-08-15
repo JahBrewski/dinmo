@@ -8,10 +8,12 @@ class Conversation < ActiveRecord::Base
   
   def self.clean_conversations
     find_each do |conversation|
-      if conversation.has_not_sent_message?
-        conversation.destroy
-      elsif conversation.outdated?
-        conversation.destroy
+      unless conversation.expert.static_number?
+        if conversation.has_not_sent_message?
+          conversation.destroy
+        elsif conversation.outdated?
+          conversation.destroy
+        end
       end
     end
   end
@@ -82,7 +84,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def process_static_message(body, from_user)
-    self.messages.create(:body => body)
+    self.messages.create(:body => body, :sender_id => from_user.id)
   end
 
   def process_expert_message(body, from_user)

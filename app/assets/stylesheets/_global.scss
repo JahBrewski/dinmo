@@ -175,6 +175,7 @@ hr.dashed-break {
 
 .center { text-align: center; }
 
+// Conversation/Message styling
 .conversation {
   form {
     margin: 0 auto;
@@ -199,4 +200,34 @@ hr.dashed-break {
 
 ul { text-align: left; }
 
+.message-container {
+  border: solid 1px black;
+  margin: 10px auto;
+  padding: 10px;
+  width: 50%;
+}
 
+.reply-button {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .message-container {
+    width: 90%;
+  }
+}
+
+.conversations-container {
+  padding-top: 20px;
+}
+
+.message-sender-container {
+  margin-bottom: 10px;
+}
+
+.message-details-container {
+  border: solid 1px black;
+  border-radius: 15px;
+  padding: 5px;
+  display: inline-block;
+}

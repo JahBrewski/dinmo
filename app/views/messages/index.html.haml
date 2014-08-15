@@ -1,8 +1,14 @@
 - if @conversations.any?
+  .conversations-container
   - @conversations.each do |conversation|
-    %ul
+    .conversation-container
     - conversation.messages.each do |message|
-      %li= message.body
-      %li= link_to "reply", new_message_path(:id => message.conversation)
+      .message-container
+        .message-details-container
+          .message-sender= message.sender.username
+          .message-datestamp= time_ago_in_words(message.created_at) + " ago"
+        .message-body.center= message.body
+        - if message.sender_id != current_user.id
+          .reply-button= link_to "reply", new_message_path(:id => message.conversation)
 - else
   No messages
