@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= bootstrap
 //= require_tree .
+jQuery(document).ready(function() {
+  setTimeout(function() {
+    var source = new EventSource('/events');
+    source.addEventListener("message", function(e) {
+      window.location.reload();
+    });
+  }, 1);
+});

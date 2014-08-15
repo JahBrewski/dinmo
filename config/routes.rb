@@ -17,8 +17,8 @@ Dinmo::Application.routes.draw do
   resources :conversations
   resources :messages
 
+  get 'events' => 'conversations#events'
   get 'twilio/process_sms' => 'conversations#process_sms'
-
   match '/terms',           to:     'static_pages#terms',        via: 'get'
 
 

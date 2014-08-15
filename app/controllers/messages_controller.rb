@@ -15,7 +15,6 @@ class MessagesController < ApplicationController
 
   def create
     #@conversation = Conversation.find(params[:id])
-    binding.pry
     @message = Message.new(message_params)
     if @message.save
       @conversation = @message.conversation

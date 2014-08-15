@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+  include ActionController::Live
+
   def new
     @pupil = params[:pupil_id]
     @expert = params[:expert_id]
@@ -46,8 +48,25 @@ class ConversationsController < ApplicationController
         @conversation.process_pupil_message(params[:Body], @from)
       end
     end
-    
     render :nothing => true
+  end
+
+  def events
+    response.headers["Content-Type"] = "text/event-stream"
+    start = Time.zone.now
+    10.times do
+      Message.uncached do
+        Message.where('created_at > ?', start).each do |message|
+          response.stream.write "data: refresh\n\n"
+          start = message.created_at
+        end
+      end
+      sleep 2
+    end
+  rescue IOError
+    # When the client disconnects, we'll get an IOError on write
+  ensure
+    response.stream.close
   end
 
   private
