@@ -16,11 +16,10 @@
 //= require_tree .
 jQuery(document).ready(function() {
   if ($(".messages-index").length > 0) {
-    setTimeout(function() {
-      var source = new EventSource('/events');
-      source.addEventListener("message", function(e) {
-        window.location.reload();
-      });
-    }, 1);
+    var pusher = new Pusher('50475f9e8a2caa59863f');
+    var channel = pusher.subscribe('messages');
+    channel.bind('refresh', function(data) {
+      window.location.reload();
+    });
   }
 });

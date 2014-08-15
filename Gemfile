@@ -13,6 +13,7 @@ gem 'paperclip', '~> 4.1'
 gem 'figaro'
 gem 'devise'
 gem 'phony_rails'
+gem 'pusher'
 #gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'rb-fsevent'

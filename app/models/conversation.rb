@@ -85,6 +85,7 @@ class Conversation < ActiveRecord::Base
 
   def process_static_message(body, from_user)
     self.messages.create(:body => body, :sender_id => from_user.id)
+    Pusher.trigger('messages', 'refresh')
   end
 
   def process_expert_message(body, from_user)
