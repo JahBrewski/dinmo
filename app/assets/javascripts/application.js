@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= bootstrap
+//= require bootstrap
 //= require_tree .
 jQuery(document).ready(function() {
   if ($(".messages-index").length > 0) {
