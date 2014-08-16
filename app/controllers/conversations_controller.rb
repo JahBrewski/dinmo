@@ -38,7 +38,7 @@ class ConversationsController < ApplicationController
 
     if User.where(:static_number => @routing_num).any?
       # message is for a user -- probably a business --with a static number
-      @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ?", @from)
+      @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ?", @from)[0]
       @conversation.process_static_message(params[:Body], @from)
     else
       @conversation = Conversation.where(:routing_number => @routing_num).where("pupil_id = ? OR expert_id = ?", @from.id, @from.id)[0]
