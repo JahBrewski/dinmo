@@ -63,6 +63,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .center-container {
+    height: 100px;
+  }
+}
+
 .headline {
   letter-spacing: 4px;
   font-size: 68px;

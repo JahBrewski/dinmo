@@ -5,4 +5,16 @@ class Message < ActiveRecord::Base
   def sender
     User.find(self.sender_id)
   end
+
+  def self.clean_messages
+    find_each do |message|
+      if message.outdated?
+        message.destroy
+      end
+    end
+  end
+
+  def outdated?
+    ( Time.now - created_at ) / 120 / 60 > 1
+  end
 end

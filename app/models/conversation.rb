@@ -3,12 +3,12 @@ class Conversation < ActiveRecord::Base
   belongs_to :pupil, class_name: "User"
   belongs_to :expert, class_name: "User"
   belongs_to :number
-  has_many :messages
+  has_many :messages, dependent: :destroy
   attr_accessor :message
   
   def self.clean_conversations
     find_each do |conversation|
-      unless conversation.expert.static_number?
+      unless conversation.expert && conversation.expert.static_number?
         if conversation.has_not_sent_message?
           conversation.destroy
         elsif conversation.outdated?
@@ -35,7 +35,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def outdated?
-    # Conversation is considered outdated if the last message was sent over an hour ago.
+    # Conversation is considered outdated if the last message was sent over two hours ago.
     ( Time.now - last_message_sent_at ) / 60 / 60 > 1
   end
 
