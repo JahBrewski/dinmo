@@ -20,7 +20,9 @@ jQuery(document).ready(function() {
     var channel = pusher.subscribe('messages');
     channel.bind('refresh', function(data) {
       document.getElementById('alert').play();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload();
+      }, (2.5 * 1000));
     });
   }
 });
