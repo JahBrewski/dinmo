@@ -16,10 +16,19 @@
 //= require_tree .
 jQuery(document).ready(function() {
   if ($(".messages-index").length > 0) {
+    var sound;
+    $('#load-dashboard').one('click', function(ev) {
+      $('#load-dashboard').hide();
+      $('.dashboard').show();
+      sound = new Audio("https://s3.amazonaws.com/myexperts-prod/assets/alert.wav");
+      sound.load();
+    });
     var pusher = new Pusher('50475f9e8a2caa59863f');
     var channel = pusher.subscribe('messages');
     channel.bind('refresh', function(data) {
-      document.getElementById('alert').play();
+      if(sound) {
+        sound.play();
+      }
       setTimeout(function() {
         window.location.reload();
       }, (2.5 * 1000));

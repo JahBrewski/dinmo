@@ -245,3 +245,22 @@ ul { text-align: left; }
   padding: 5px;
   display: inline-block;
 }
+
+#load-dashboard {
+  border: solid 1px black;
+  padding: 5px;
+  width: 50%;
+  margin: 50px auto 0 auto;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #load-dashboard {
+    width: 90%;
+  }
+}
+
+.dashboard {
+  display: none;
+}

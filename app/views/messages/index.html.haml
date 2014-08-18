@@ -1,15 +1,16 @@
-%audio#alert{:preload => "auto", :src => "https://s3.amazonaws.com/myexperts-prod/assets/alert.wav"}
-- if @conversations.any?
-  .conversations-container
-  - @conversations.each do |conversation|
-    .conversation-container
-    - conversation.messages.each do |message|
-      .message-container
-        .message-details-container
-          .message-sender= message.sender.username
-          .message-datestamp= time_ago_in_words(message.created_at) + " ago"
-        .message-body.center= message.body
-        - if message.sender_id != current_user.id
-          .reply-button= link_to "reply", new_message_path(:id => message.conversation)
-- else
-  No messages
+#load-dashboard.center Load Dashboard
+.dashboard
+  - if @conversations.any?
+    .conversations-container
+    - @conversations.each do |conversation|
+      .conversation-container
+      - conversation.messages.each do |message|
+        .message-container
+          .message-details-container
+            .message-sender= message.sender.username
+            .message-datestamp= time_ago_in_words(message.created_at) + " ago"
+          .message-body.center= message.body
+          - if message.sender_id != current_user.id
+            .reply-button= link_to "reply", new_message_path(:id => message.conversation)
+  - else
+    No messages
