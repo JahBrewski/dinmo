@@ -19,8 +19,8 @@ jQuery(document).ready(function() {
     var pusher = new Pusher('50475f9e8a2caa59863f');
     var channel = pusher.subscribe('messages');
     channel.bind('refresh', function(data) {
-      window.location.reload();
       document.getElementById('alert').play();
+      window.location.reload();
     });
   }
 });
