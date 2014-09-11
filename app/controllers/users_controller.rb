@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :load_user, :only => [:available, :unavailable]
-  JON_MCEWEN = User.find_by username: "jonmcewen"
+  JON_MCEWEN = User.find_by username: "Try it out!"
   def show
   end
 
