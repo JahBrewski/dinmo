@@ -1,0 +1,26 @@
+.center
+  %h2 Once you have decided where to eat, click the message button to order
+  .tutorial-input
+    = text_field_tag 'search', nil, placeholder: 'subs close to vanderbilt'
+  .tutorial-submit Person
+  .tutorial-submit Business
+  .tutorial-results
+    %ul
+      %li
+        %span Jersey Mikes
+        %a message
+      %li
+        %span Johnny Jim's
+        %a message
+      %li
+        %span Sub Shop
+        %a message
+      %li
+        %span Mitchell's Deli
+        %a message
+      %li
+        %span The Lunch Box
+        %a message
+%a.anchor-no-style{:href => "/tutorial-4"}
+  .center.tutorial-next Next
+

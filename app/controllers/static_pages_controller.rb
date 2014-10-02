@@ -7,4 +7,8 @@ class StaticPagesController < ApplicationController
 
   def terms
   end
+
+  def tutorial
+    @user = current_user
+  end
 end

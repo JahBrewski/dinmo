@@ -18,7 +18,8 @@ class AfterSignupController < ApplicationController
 
   def finish_wizard_path
     current_user.update_normalized_number
-    users_path
+    tutorial_path
+    #users_path
   end
 
   private

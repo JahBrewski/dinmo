@@ -1,0 +1,15 @@
+.center
+  %h2 Type in your order here!
+
+  .tutorial-conversation-container
+    %h1.center Start conversation
+    .tutorial-conversation-form
+      = text_area :message, :rows => "5"
+      = hidden_field :pupil_id, :value => nil
+      = hidden_field :expert_id, :value => nil
+    .tutorial-submit-container
+      .tutorial-submit Create conversation
+
+%a.anchor-no-style{:href => "/"}
+  .center.tutorial-next Got it!
+

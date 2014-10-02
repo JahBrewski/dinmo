@@ -1,0 +1,53 @@
+$montserrat: 'Montserrat', sans-serif;
+$blue: #00004c;
+
+@mixin action-box {
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+  font-family: $montserrat;
+  font-size: 25px;
+  margin: 20px;
+  border: solid black 2px;
+  &:hover {
+    border: solid $blue 2px;
+    color: $blue;
+  }
+}
+
+.tutorial-next {
+  @include action-box;
+}
+
+.tutorial-submit {
+  @include action-box;
+  display: inline-block;
+}
+
+.tutorial-submit-block {
+  @include action-box;
+}
+
+.tutorial-input {
+  margin-top: 50px;
+  input {
+    height: 30px;
+    width: 350px;
+  }
+}
+
+.tutorial-results {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.tutorial-conversation-form {
+  textarea {
+    width: 40%;
+    height: 100px;
+  }
+}
+
+.tutorial-conversation-container {
+  margin-top: 100px;
+}
