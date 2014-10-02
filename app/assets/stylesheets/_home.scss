@@ -6,3 +6,25 @@
   position: relative;
   top: -8px;
 }
+
+.image-container {
+  width: 50%;
+  position: absolute;
+}
+
+.form-container {
+  left: 50%;
+  width: 50%;
+  position: absolute;
+  margin-top: 100px;
+}
+
+.main-container {
+  position: relative;
+}
+
+.sign-in {
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}

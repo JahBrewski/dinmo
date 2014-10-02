@@ -264,3 +264,14 @@ ul { text-align: left; }
 .dashboard {
   display: none;
 }
+
+.anchor-no-style {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: inherit;
+  }
+  &:active {
+    color: inherit;
+  }
+}

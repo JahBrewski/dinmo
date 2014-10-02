@@ -39,9 +39,9 @@ $(function() {
   function action_button_handler() {
    $(".join-us").click(function() {
      fade_in_input_fields();
-     $(".join-us").addClass("hide");
+     $(".join-us-container").addClass("hide");
+     $(".sign-in-container").addClass("hide");
      $(".submit").removeClass("hide");
-
    });
   }
 
