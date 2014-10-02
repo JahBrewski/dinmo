@@ -5,7 +5,9 @@
       .input-field
         = text_field_tag :search, params[:search]
       .action-button.submit
-        = submit_tag "Add", :name => nil
+        = submit_tag "Person"
+      .action-button.submit
+        = submit_tag "Business"
     %ul.pull-left
       - if @users.any?
         - @users.each do |user|
