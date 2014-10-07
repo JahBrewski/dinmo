@@ -11,6 +11,10 @@
       .action-button.padding Thanks for signing up!
     - else
       .sign-up-form
+        .sms-logo
+          = image_tag("sms_logo.jpg")
+        .sms-logo-slogan
+          %h4 Text Anything
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
           = render partial: "devise/error_messages", locals: {flash: flash}
           .hidden-input-field
@@ -32,20 +36,20 @@
     %a{:href => "/#learn-more"} Learn More
 .home-learn-more-container#learn-more
   .about-item-container
-    %h1 Local Businesses
     .description
+      %h1 Local Businesses
       %p Need a sub? Search sub shops and text your order.  
     .image
       = image_tag("local_businesses.jpg")
   .about-item-container
-    %h1 Local People
     .description 
+      %h1 Local People
       %p Need to talk to a classmate? Search by your classes and text someone.
     .image
       = image_tag("local_people.jpg")
   .about-item-container
-    %h1 Safe and Secure
     .description
+      %h1 Safe and Secure
       %p We focus on keeping your information private from other users.
     .image
       = image_tag("safe_and_secure.jpg")
