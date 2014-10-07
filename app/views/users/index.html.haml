@@ -4,10 +4,8 @@
     = form_tag users_path, :method => 'get' do
       .input-field
         = text_field_tag :search, params[:search]
-      .action-button.submit
-        = submit_tag "Person"
-      .action-button.submit
-        = submit_tag "Business"
+        = submit_tag "Person", :class => "action-button submit"
+        = submit_tag "Business", :class => "action-button submit"
     %ul.pull-left
       - if @users.any?
         - @users.each do |user|

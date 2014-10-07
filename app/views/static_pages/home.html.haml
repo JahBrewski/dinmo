@@ -1,10 +1,10 @@
-%h1.headline.text-center EXPERTS
-.image-container
+.home-main-container
+  %h1.headline.text-center EXPERTS
   -#.video-container
     %iframe{allowfullscreen: "", frameborder: "0", height: "360", src: "//www.youtube.com/embed/ugylrqigoKc?controls=0&showinfo=0", width: "480"}
-  = image_tag("media_devices.jpg")
-.form-container
-  .col-md-6.col-md-offset-3.text-center
+  .image-container
+    = image_tag("media_devices.jpg")
+  .form-container
     - if user_signed_in? && current_user.confirmed? == false
       .action-button.padding= "Confirmation sent to #{current_user.email}"
     -elsif user_signed_in?
@@ -28,3 +28,26 @@
             %a.anchor-no-style{:href => "/users/sign_in"}
               .action-button.sign-in Sign in
           .action-button.submit.hide= f.submit "Submit"
+  .learn-more-link
+    %a{:href => "/#learn-more"} Learn More
+.home-learn-more-container#learn-more
+  .about-item-container
+    %h1 Local Businesses
+    .description
+      %p Need a sub? Search sub shops and text your order.  
+    .image
+      = image_tag("local_businesses.jpg")
+  .about-item-container
+    %h1 Local People
+    .description 
+      %p Need to talk to a classmate? Search by your classes and text someone.
+    .image
+      = image_tag("local_people.jpg")
+  .about-item-container
+    %h1 Safe and Secure
+    .description
+      %p We focus on keeping your information private from other users.
+    .image
+      = image_tag("safe_and_secure.jpg")
+  
+  

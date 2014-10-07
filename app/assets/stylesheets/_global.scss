@@ -1,5 +1,7 @@
 $montserrat: 'Montserrat', sans-serif;
 $blue: #00004c;
+$logo-blue: #3031ff;
+
 html { height: 100%; }
 body {
   padding-top: 50px;
@@ -42,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 .absolute-center {
-  width: 50%;
+  width: 70%;
   height: 20%;
   margin: auto;
   position: absolute;
@@ -79,24 +81,33 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $montserrat;
   font-size: 25px;
   margin: 20px;
+  color: white;
+  background-color: $logo-blue;
   border: solid black 2px;
+  width: 200px;
+  height: 100% !important;
   &:hover {
     border: solid $blue 2px;
-    color: $blue;
+    background-color: darken($logo-blue, 5);
   }
   input[type="submit"] {
     padding: 0;
     padding: 10px;
     border: none;
-    background-color: white;
+    background-color: $logo-blue;
     cursor: pointer;
   }
+}
+
+.action-button.submit {
+  width: 40%;
+  display: inline-block;
 }
 
 .join-us {
   padding: 0;
   padding: 10px;
-  background-color: white;
+  //background-color: white;
   cursor: pointer;
 }
 

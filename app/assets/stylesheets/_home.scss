@@ -1,3 +1,7 @@
+.home-main-container, .home-learn-more-container {
+  height: 100%;
+}
+
 .terms input {
   width: 20px;
 }
@@ -9,22 +13,50 @@
 
 .image-container {
   width: 50%;
-  position: absolute;
+  float: left;
+  img {
+    width: 100%;
+    min-width: 220px;
+  }
 }
 
 .form-container {
-  left: 50%;
-  width: 50%;
-  position: absolute;
-  margin-top: 100px;
+  float: left;
 }
 
 .main-container {
   position: relative;
+  height: 100%;
 }
 
 .sign-in {
   padding: 10px;
-  background-color: white;
   cursor: pointer;
 }
+
+.learn-more-link {
+  clear: both;
+  text-align: center;
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}
+
+#learn-more {
+  padding-top: 100px;
+}
+
+.about-item-container {
+  .description {
+    width: 50%;
+    float: left;
+  }
+  .image {
+    width: 50%;
+    float: left;
+    img {
+      width: 350px;
+      margin: 0 100px;
+    }
+  }
+ } 
