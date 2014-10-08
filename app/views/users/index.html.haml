@@ -1,11 +1,11 @@
 .center-container
   .absolute-center.text-center
-    %h1.text-center Experts
+    %h1.text-center.experts-big Experts
     = form_tag users_path, :method => 'get' do
       .input-field
         = text_field_tag :search, params[:search]
-        = submit_tag "Person", :class => "action-button submit"
-        = submit_tag "Business", :class => "action-button submit"
+        = submit_tag "Person", :class => "action-button submit-user-index"
+        = submit_tag "Business", :class => "action-button submit-user-index"
     %ul.pull-left
       - if @users.any?
         - @users.each do |user|
