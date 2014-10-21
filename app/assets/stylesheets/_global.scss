@@ -110,7 +110,13 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $logo-blue;
     cursor: pointer;
   }
+  @media (max-width: 768px) {
+    display: block;
+    width: 80% !important;
+  }
 }
+
+
 
 .action-button.submit {
   width: 100%;
