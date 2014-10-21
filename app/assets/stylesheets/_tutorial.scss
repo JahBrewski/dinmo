@@ -1,11 +1,8 @@
-$montserrat: 'Montserrat', sans-serif;
-$blue: #00004c;
-
 @mixin action-box {
   padding: 10px;
   background-color: white;
   cursor: pointer;
-  font-family: $montserrat;
+  font-family: $hind;
   font-size: 25px;
   margin: 20px;
   border: solid black 2px;

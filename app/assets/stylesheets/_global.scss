@@ -1,14 +1,10 @@
-$montserrat: 'Montserrat', sans-serif;
-$blue: #00004c;
-$logo-blue: #3031ff;
-
 html { height: 100%; }
 body {
   padding-top: 50px;
   height: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $montserrat;
+  font-family: $hind;
 }
 
 .container {
@@ -21,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-default {
   background-color: #212121;
-  font-family: $montserrat;
+  font-family: $hind;
   min-height: 30px;
   height: 30px;
   .navbar-brand {
@@ -95,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .action-button {
   display: inline-block;
-  font-family: $montserrat;
+  font-family: $hind;
   font-size: 25px;
   margin: 20px;
   color: white;
