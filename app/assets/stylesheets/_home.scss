@@ -69,6 +69,8 @@
     float: left;
     @media (max-width: 500px) {
       float: none;
+      width: 100%;
+      text-align: center;
     }
   }
   .image {
@@ -79,7 +81,11 @@
       margin: 0 100px;
       @media (max-width: 500px) {
         margin: 0;
+        width: 100%;
       }
+    }
+    @media (max-width: 500px) {
+      width: 100%;
     }
   }
  } 
