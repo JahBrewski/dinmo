@@ -1,4 +1,8 @@
-html { height: 100%; }
+html { 
+  height: 100%;
+  width: 100%;
+}
+
 body {
   padding-top: 50px;
   height: 100%;
@@ -110,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $logo-blue;
     cursor: pointer;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 500px) {
     display: block;
     width: 80% !important;
   }
